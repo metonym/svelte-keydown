@@ -1,0 +1,43 @@
+{
+  "name": "svelte-keydown",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Utility to listen for keyboard events",
+  "author": "Eric Liu (https://github.com/metonym)",
+  "svelte": "src/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "sideEffects": false,
+  "scripts": {
+    "prepack": "rollup -c"
+  },
+  "peerDependencies": {
+    "svelte": "^3.20.x"
+  },
+  "devDependencies": {
+    "rollup": "^2.7.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.2.1",
+    "svelte": "^3.20.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metonym/svelte-keydown.git"
+  },
+  "homepage": "https://github.com/metonym/svelte-keydown",
+  "bugs": "https://github.com/metonym/svelte-keydown/issues",
+  "keywords": [
+    "svelte",
+    "svelte component",
+    "keydown",
+    "keyup",
+    "utility",
+    "escape",
+    "enter",
+    "combo"
+  ],
+  "files": [
+    "lib",
+    "src"
+  ]
+}

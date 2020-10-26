@@ -17,7 +17,7 @@ yarn add -D svelte-keydown
 
 ## Usage
 
-```html
+```svelte
 <script>
   import Keydown from "svelte-keydown";
 </script>
@@ -29,7 +29,7 @@ yarn add -D svelte-keydown
 
 ### Escape to Close Modal
 
-```html
+```svelte
 <script>
   import Keydown from "svelte-keydown";
 
@@ -45,7 +45,7 @@ yarn add -D svelte-keydown
 
 ### "Command+S" to Save
 
-```html
+```svelte
 <script>
   import Keydown from "svelte-keydown";
 </script>
@@ -71,7 +71,7 @@ yarn add -D svelte-keydown
 
 Example:
 
-```jsx
+```svelte
 <Keydown on:Enter={() => {}} />
 ```
 
@@ -81,7 +81,7 @@ Alternative API to `on:{Key}`.
 
 Example:
 
-```jsx
+```svelte
 <Keydown
   on:key={({ detail }) => {
     console.log(detail); // "Enter"
@@ -95,7 +95,7 @@ Triggered when a sequence of keys are pressed and cleared when a keyup event is 
 
 Example:
 
-```jsx
+```svelte
 <Keydown
   on:combo={({ detail }) => {
     console.log(detail); // "Meta-Shift-a"

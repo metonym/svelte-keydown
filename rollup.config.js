@@ -6,7 +6,7 @@ export default ["es", "umd"].map((format) => {
   const UMD = format === "umd";
 
   return {
-    input: "src",
+    input: pkg.svelte,
     output: {
       format,
       file: UMD ? pkg.main : pkg.module,

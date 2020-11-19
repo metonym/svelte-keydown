@@ -1,4 +1,9 @@
 <script>
+  /**
+   * @event {string} combo
+   * @event {string} key
+   */
+
   export let paused = false;
 
   import { createEventDispatcher } from "svelte";
@@ -7,9 +12,7 @@
 
   let combo = [];
 
-  $: if (combo.length > 0) {
-    dispatch("combo", combo.join("-"));
-  }
+  $: if (combo.length > 0) dispatch("combo", combo.join("-"));
 </script>
 
 <svelte:body

@@ -1,4 +1,5 @@
 /// <reference types="svelte" />
+import { SvelteComponentTyped } from "svelte";
 
 export interface KeydownProps {
   /**
@@ -7,11 +8,12 @@ export interface KeydownProps {
   paused?: boolean;
 }
 
-export default class Keydown {
-  $$prop_def: KeydownProps;
-  $$slot_def: {};
-
-  $on(eventname: "combo", cb: (event: CustomEvent<string>) => void): () => void;
-  $on(eventname: "key", cb: (event: CustomEvent<string>) => void): () => void;
-  $on(eventname: string, cb: (event: Event) => void): () => void;
-}
+export default class Keydown extends SvelteComponentTyped<
+  KeydownProps,
+  {
+    combo: CustomEvent<string>;
+    key: CustomEvent<string>;
+    [key: string]: CustomEvent<any>;
+  },
+  {}
+> {}

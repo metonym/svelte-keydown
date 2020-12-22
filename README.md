@@ -5,14 +5,23 @@
 
 > Utility to listen for keyboard events.
 
-Simple wrapper using [svelte:body](https://svelte.dev/docs#svelte_body) to listen for [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event) events.
+Utility component leveraging the [svelte:body API](https://svelte.dev/docs#svelte_body) to listen for [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event) events.
 
-This can be used to close modals or listen for a combination of keydown events.
+**Use Cases**
+
+- toggle modals
+- capture a combination of keys (i.e., "Meta-s")
+
+---
+
+<!-- TOC -->
 
 ## Install
 
 ```bash
 yarn add -D svelte-keydown
+# OR
+npm i -D svelte-keydown
 ```
 
 ## Usage
@@ -20,19 +29,23 @@ yarn add -D svelte-keydown
 ```svelte
 <script>
   import Keydown from "svelte-keydown";
+
+  let events = [];
 </script>
 
-<Keydown on:Enter="{() => { console.log('Enter'); }}" />
+<Keydown on:Enter="{() => { events = [...events, 'enter'] }}" />
+
+Press "enter": {events.join(', ')}
 ```
 
 ## Examples
 
 ### Escape to Close Modal
 
+In this use case, keydown events are paused if the modal is not open.
+
 ```svelte
 <script>
-  import Keydown from "svelte-keydown";
-
   let showModal = true;
 
   function closeModal() {
@@ -41,52 +54,64 @@ yarn add -D svelte-keydown
 </script>
 
 <Keydown paused="{!showModal}" on:Escape="{closeModal}" />
+
+<button on:click="{() => { showModal = !showModal; }}">Toggle modal</button>
+<br />
+Toggled {showModal}
+
 ```
 
 ### "Command+S" to Save
 
+Use the `combo` dispatched event to listen for a combination of keys.
+
 ```svelte
 <script>
-  import Keydown from "svelte-keydown";
+  let save = [];
 </script>
 
 <Keydown
-  on:combo="{({detail}) => {
-    if (detail === 'Meta-s') {
+  on:combo="{(e) => {
+    if (e.detail === 'Meta-s') {
       console.log('Save');
+      save = [...save, e.detail]
     }
   }}"
 />
+
+{save.join(', ')}
 ```
 
 ## API
 
-| Property name | Value                        |
-| :------------ | :--------------------------- |
-| paused        | `boolean` (default: `false`) |
+| Prop name | Value                        |
+| :-------- | :--------------------------- |
+| paused    | `boolean` (default: `false`) |
 
 ### Dispatched events
 
-#### `on:{Key}`
+#### `on:[Key]`
 
 Example:
 
 ```svelte
-<Keydown on:Enter={() => {}} />
+<Keydown on:Enter />
+<Keydown on:Escape />
+
 ```
 
 #### `on:key`
 
-Alternative API to `on:{Key}`.
+Alternative API to `on:[Key]`.
 
 Example:
 
 ```svelte
 <Keydown
   on:key={({ detail }) => {
-    console.log(detail); // "Enter"
-  }}
-/>
+    console.log(detail); // string | "Enter"
+  }} />
+
 ```
 
 #### `on:combo`
@@ -99,11 +124,17 @@ Example:
 <Keydown
   on:combo={({ detail }) => {
     console.log(detail); // "Meta-Shift-a"
-  }}
-/>
+  }} />
+
 ```
 
-## [Changelog](CHANGELOG.md)
+## TypeScript
+
+Svelte version 3.31 or greater is required to use this module with TypeScript.
+
+## Changelog
+
+[CHANGELOG.md](CHANGELOG.md)
 
 ## License
 

@@ -1,9 +1,10 @@
 # svelte-keydown
 
 [![NPM][npm]][npm-url]
-[![Build][build]][build-badge]
 
 > Utility to listen for keyboard events.
+
+<!-- REPO_URL -->
 
 Utility component leveraging the [svelte:body API](https://svelte.dev/docs#svelte_body) to listen for [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event) events.
 
@@ -33,9 +34,13 @@ npm i -D svelte-keydown
   let events = [];
 </script>
 
-<Keydown on:Enter="{() => { events = [...events, 'enter'] }}" />
+<Keydown
+  on:Enter={() => {
+    events = [...events, "enter"];
+  }}
+/>
 
-Press "enter": {events.join(', ')}
+Press "enter": {events.join(", ")}
 ```
 
 ## Examples
@@ -53,12 +58,19 @@ In this use case, keydown events are paused if the modal is not open.
   }
 </script>
 
-<Keydown paused="{!showModal}" on:Escape="{closeModal}" />
+<Keydown paused={!showModal} on:Escape={closeModal} />
 
-<button on:click="{() => { showModal = !showModal; }}">Toggle modal</button>
-<br />
-Toggled {showModal}
+<button
+  on:click={() => {
+    showModal = !showModal;
+  }}
+>
+  Toggle me
+</button>
 
+<br /><br />
+
+Toggled? {showModal}
 ```
 
 ### "Command+S" to Save
@@ -71,15 +83,15 @@ Use the `combo` dispatched event to listen for a combination of keys.
 </script>
 
 <Keydown
-  on:combo="{(e) => {
-    if (e.detail === 'Meta-s') {
-      console.log('Save');
-      save = [...save, e.detail]
+  on:combo={(e) => {
+    if (e.detail === "Meta-s") {
+      console.log("Save");
+      save = [...save, e.detail];
     }
-  }}"
+  }}
 />
 
-{save.join(', ')}
+{save.join(", ")}
 ```
 
 ## API
@@ -97,7 +109,6 @@ Example:
 ```svelte
 <Keydown on:Enter />
 <Keydown on:Escape />
-
 ```
 
 #### `on:key`
@@ -107,25 +118,45 @@ Alternative API to `on:[Key]`.
 Example:
 
 ```svelte
+<script>
+  let key_events = [];
+</script>
+
 <Keydown
   on:key={({ detail }) => {
-    console.log(detail); // string | "Enter"
-  }} />
+    key_events = [...key_events, detail];
+  }}
+/>
 
+<pre>
+  {JSON.stringify(key_events, null, 2)}
+</pre>
 ```
 
 #### `on:combo`
 
 Triggered when a sequence of keys are pressed and cleared when a keyup event is fired.
 
-Example:
+Examples:
+
+- "Shift-S"
+- "Meta-c" (Copy)
+- "Meta-v" (Paste)
 
 ```svelte
+<script>
+  let combo_events = [];
+</script>
+
 <Keydown
   on:combo={({ detail }) => {
-    console.log(detail); // "Meta-Shift-a"
-  }} />
+    combo_events = [...combo_events, detail];
+  }}
+/>
 
+<pre>
+  {JSON.stringify(combo_events, null, 2)}
+</pre>
 ```
 
 ## TypeScript
@@ -140,7 +171,5 @@ Svelte version 3.31 or greater is required to use this module with TypeScript.
 
 [MIT](LICENSE)
 
-[npm]: https://img.shields.io/npm/v/svelte-keydown.svg?color=blue
+[npm]: https://img.shields.io/npm/v/svelte-keydown.svg?color=%23ff3e00&style=for-the-badge
 [npm-url]: https://npmjs.com/package/svelte-keydown
-[build]: https://travis-ci.com/metonym/svelte-keydown.svg?branch=master
-[build-badge]: https://travis-ci.com/metonym/svelte-keydown

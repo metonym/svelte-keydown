@@ -19,11 +19,11 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@tsconfig/svelte": "^1.0.10",
-    "rollup": "^2.40.0",
+    "rollup": "^2.42.1",
     "rollup-plugin-svelte": "^7.1.0",
     "svelte": "^3.35.0",
-    "svelte-check": "^1.2.3",
-    "svelte-readme": "^3.0.0",
+    "svelte-check": "^1.2.6",
+    "svelte-readme": "^3.1.0",
     "typescript": "^4.2.3"
   },
   "repository": {

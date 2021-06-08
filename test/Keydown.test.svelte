@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Keydown from "./types";
+  import Keydown from "../types";
 
   let showModal = true;
 
@@ -13,11 +13,13 @@
   on:Escape={closeModal}
   on:combo={(e) => {
     console.log(e.detail);
-  }} />
+  }}
+/>
 
 Toggled
 {showModal}
 <button
   on:click={() => {
     showModal = !showModal;
-  }}>Toggle modal</button>
+  }}>Toggle modal</button
+>

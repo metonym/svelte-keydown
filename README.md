@@ -27,6 +27,8 @@ npm i -D svelte-keydown
 
 ## Usage
 
+### Basic
+
 ```svelte
 <script>
   import Keydown from "svelte-keydown";
@@ -41,6 +43,27 @@ npm i -D svelte-keydown
 />
 
 Press "enter": {events.join(", ")}
+```
+
+### Pause on input
+
+Set `pauseOnInput` to prevent the utility from capturing keydown events on input events.
+
+```svelte
+<script>
+  let evt = [];
+</script>
+
+<Keydown
+  pauseOnInput
+  on:key={(e) => {
+    evt = [...evt, e.detail];
+  }}
+/>
+
+<input placeholder="Type here..." />
+
+{evt.join(", ")}
 ```
 
 ## Examples
@@ -96,9 +119,10 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 ## API
 
-| Prop name | Value                        |
-| :-------- | :--------------------------- |
-| paused    | `boolean` (default: `false`) |
+| Prop name    | Value                        |
+| :----------- | :--------------------------- |
+| paused       | `boolean` (default: `false`) |
+| pauseOnInput | `boolean` (default: `false`) |
 
 ### Dispatched events
 

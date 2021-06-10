@@ -1,1 +1,1 @@
-export { default as default } from "./Keydown";
+export { default } from "./Keydown";

@@ -96,25 +96,22 @@ In this use case, keydown events are paused if the modal is not open.
 Toggled? {showModal}
 ```
 
-### "Command+S" to Save
+### on:combo
 
 Use the `combo` dispatched event to listen for a combination of keys.
 
 ```svelte
 <script>
-  let save = [];
+  let combo = [];
 </script>
 
 <Keydown
   on:combo={(e) => {
-    if (e.detail === "Meta-s") {
-      console.log("Save");
-      save = [...save, e.detail];
-    }
+    combo = [...combo, e.detail];
   }}
 />
 
-{save.join(", ")}
+{combo.join(", ")}
 ```
 
 ## API

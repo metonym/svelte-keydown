@@ -1,25 +1,17 @@
 <script lang="ts">
   import Keydown from "../types";
+  import K from "../types/Keydown.svelte";
 
   let showModal = true;
-
-  function closeModal() {
-    showModal = false;
-  }
 </script>
 
 <Keydown
+  pauseOnInput
   paused={!showModal}
-  on:Escape={closeModal}
+  on:Escape={() => (showModal = false)}
   on:combo={(e) => {
-    console.log(e.detail);
+    console.log(e.detail); // string
   }}
 />
 
-Toggled
-{showModal}
-<button
-  on:click={() => {
-    showModal = !showModal;
-  }}>Toggle modal</button
->
+<K on:combo={(e) => e.detail} />

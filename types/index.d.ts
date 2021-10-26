@@ -1,1 +1,1 @@
-export { default } from "./Keydown";
+export { default } from "./Keydown.svelte";

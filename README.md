@@ -17,11 +17,17 @@ Utility component leveraging the [svelte:body API](https://svelte.dev/docs#svelt
 
 <!-- TOC -->
 
-## Install
+## Installation
+
+**Yarn**
 
 ```bash
 yarn add -D svelte-keydown
-# OR
+```
+
+**NPM**
+
+```bash
 npm i -D svelte-keydown
 ```
 
@@ -51,6 +57,8 @@ Set `pauseOnInput` to prevent the utility from capturing keydown events on input
 
 ```svelte
 <script>
+  import Keydown from "svelte-keydown";
+
   let evt = [];
 </script>
 
@@ -63,7 +71,7 @@ Set `pauseOnInput` to prevent the utility from capturing keydown events on input
 
 <input placeholder="Type here..." />
 
-{evt.join(", ")}
+{evt.join("")}
 ```
 
 ## Examples
@@ -74,22 +82,14 @@ In this use case, keydown events are paused if the modal is not open.
 
 ```svelte
 <script>
-  let showModal = true;
+  import Keydown from "svelte-keydown";
 
-  function closeModal() {
-    showModal = false;
-  }
+  let showModal = true;
 </script>
 
-<Keydown paused={!showModal} on:Escape={closeModal} />
+<Keydown paused={!showModal} on:Escape={() => (showModal = false)} />
 
-<button
-  on:click={() => {
-    showModal = !showModal;
-  }}
->
-  Toggle me
-</button>
+<button on:click={() => (showModal = !showModal)}> Toggle me </button>
 
 <br /><br />
 
@@ -102,14 +102,12 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 ```svelte
 <script>
+  import Keydown from "svelte-keydown";
+
   let combo = [];
 </script>
 
-<Keydown
-  on:combo={(e) => {
-    combo = [...combo, e.detail];
-  }}
-/>
+<Keydown on:combo={(e) => (combo = [...combo, e.detail])} />
 
 {combo.join(", ")}
 ```
@@ -127,9 +125,8 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 Example:
 
-```svelte
-<Keydown on:Enter />
-<Keydown on:Escape />
+```html
+<Keydown on:Enter /> <Keydown on:Escape />
 ```
 
 #### `on:key`
@@ -140,17 +137,15 @@ Example:
 
 ```svelte
 <script>
-  let key_events = [];
+  import Keydown from "svelte-keydown";
+
+  let keys = [];
 </script>
 
-<Keydown
-  on:key={({ detail }) => {
-    key_events = [...key_events, detail];
-  }}
-/>
+<Keydown on:key={({ detail }) => (keys = [...keys, detail])} />
 
 <pre>
-  {JSON.stringify(key_events, null, 2)}
+  {JSON.stringify(keys, null, 2)}
 </pre>
 ```
 
@@ -166,23 +161,23 @@ Examples:
 
 ```svelte
 <script>
-  let combo_events = [];
+  import Keydown from "svelte-keydown";
+
+  let combos = [];
 </script>
 
-<Keydown
-  on:combo={({ detail }) => {
-    combo_events = [...combo_events, detail];
-  }}
-/>
+<Keydown on:combo={({ detail }) => (combos = [...combos, detail])} />
 
 <pre>
-  {JSON.stringify(combo_events, null, 2)}
+  {JSON.stringify(combos, null, 2)}
 </pre>
 ```
 
 ## TypeScript
 
-Svelte version 3.31 or greater is required to use this module with TypeScript.
+Svelte version 3.31 or greater is required to use this component with TypeScript.
+
+TypeScript definitions are located in the [types folder](./types).
 
 ## Changelog
 

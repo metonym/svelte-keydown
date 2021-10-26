@@ -5,6 +5,7 @@
   let showModal = true;
 </script>
 
+<!-- svelte-ignore missing-declaration -->
 <Keydown
   pauseOnInput
   paused={!showModal}
@@ -14,4 +15,5 @@
   }}
 />
 
+<!-- svelte-ignore missing-declaration -->
 <K on:combo={(e) => e.detail} />

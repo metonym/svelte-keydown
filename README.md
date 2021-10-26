@@ -125,9 +125,12 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 Example:
 
+<!-- prettier-ignore-start -->
 ```html
-<Keydown on:Enter /> <Keydown on:Escape />
+<Keydown on:Enter />
+<Keydown on:Escape />
 ```
+<!-- prettier-ignore-end -->
 
 #### `on:key`
 

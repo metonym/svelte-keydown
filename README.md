@@ -102,7 +102,7 @@ In this use case, keydown events are paused if the modal is not open.
 Toggled? {showModal}
 ```
 
-### on:combo
+### `on:combo`
 
 Use the `combo` dispatched event to listen for a combination of keys.
 
@@ -120,10 +120,10 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 ## API
 
-| Prop name    | Value                        |
-| :----------- | :--------------------------- |
-| paused       | `boolean` (default: `false`) |
-| pauseOnInput | `boolean` (default: `false`) |
+| Prop         | Type      | Default value |
+| :----------- | :-------- | :------------ |
+| paused       | `boolean` | `false`       |
+| pauseOnInput | `boolean` | `false`       |
 
 ### Dispatched events
 

@@ -31,6 +31,12 @@ yarn add -D svelte-keydown
 npm i -D svelte-keydown
 ```
 
+**pnpm**
+
+```bash
+pnpm i -D svelte-keydown
+```
+
 ## Usage
 
 ### Basic

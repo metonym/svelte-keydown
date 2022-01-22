@@ -9,7 +9,9 @@
 <Keydown
   pauseOnInput
   paused={!showModal}
-  on:Escape={() => (showModal = false)}
+  on:keyup={(e) => console.log(e)}
+  on:keydown={(e) => console.log(e)}
+  on:Escape={(e) => (showModal = false)}
   on:combo={(e) => {
     console.log(e.detail); // string
   }}

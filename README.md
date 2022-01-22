@@ -82,6 +82,25 @@ Set `pauseOnInput` to prevent the utility from capturing keydown events on input
 {evt.join("")}
 ```
 
+### Preventing the default behavior
+
+This component forward the `on:keyup` and `on:keydown` events.
+
+You can use `on:keydown` to prevent the default behavior for certain keys.
+
+In the following example, pressing "Space" should not cause the browser page to scroll.
+
+```svelte
+<Keydown
+  on:keydown={(e) => {
+    if (e.key === " ") e.preventDefault();
+  }}
+  on:Space={(e) => {
+    console.log("key", "Space");
+  }}
+/>
+```
+
 ## Examples
 
 ### Escape to close a modal
@@ -126,6 +145,11 @@ Use the `combo` dispatched event to listen for a combination of keys.
 | :----------- | :-------- | :------------ |
 | paused       | `boolean` | `false`       |
 | pauseOnInput | `boolean` | `false`       |
+
+### Forwarded events
+
+- `on:keyup`
+- `on:keydown`
 
 ### Dispatched events
 

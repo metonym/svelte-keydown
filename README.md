@@ -82,7 +82,7 @@ Set `pauseOnInput` to prevent the utility from capturing keydown events on input
 
 ## Examples
 
-### Escape to Close Modal
+### Escape to close a modal
 
 In this use case, keydown events are paused if the modal is not open.
 
@@ -131,12 +131,11 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 Example:
 
-<!-- prettier-ignore-start -->
-```html
+```svelte no-eval
 <Keydown on:Enter />
 <Keydown on:Escape />
+<Keydown on:Space />
 ```
-<!-- prettier-ignore-end -->
 
 #### `on:key`
 

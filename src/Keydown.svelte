@@ -1,9 +1,4 @@
 <script>
-  /**
-   * @event {string} combo
-   * @event {string} key
-   */
-
   /** Set to `true` to pause the capture of keydown events */
   export let paused = false;
 
@@ -23,11 +18,13 @@
 </script>
 
 <svelte:body
+  on:keyup
   on:keyup={({ key }) => {
     down = down.filter((_key) => _key !== key);
     if (down.length > 0) return;
     combo = [];
   }}
+  on:keydown
   on:keydown={({ key, target }) => {
     if (pauseOnInput && target.tagName !== "BODY") {
       return;

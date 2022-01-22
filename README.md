@@ -8,6 +8,8 @@
 
 Utility component leveraging the [svelte:body API](https://svelte.dev/docs#svelte_body) to listen for [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event) events.
 
+[Try it in the Svelte REPL](https://svelte.dev/repl/f22827a1e3c94a018a685fec6346db6c).
+
 **Use Cases**
 
 - toggle modals

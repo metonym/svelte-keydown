@@ -90,7 +90,7 @@ You can use `on:keydown` to prevent the default behavior for certain keys.
 
 In the following example, pressing "Space" should not cause the browser page to scroll.
 
-```svelte no-display
+```svelte
 <Keydown
   on:keydown={(e) => {
     if (e.key === " ") e.preventDefault();

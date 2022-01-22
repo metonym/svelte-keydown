@@ -42,7 +42,7 @@
         dispatch("combo", combination);
       }
 
-      dispatch(key);
+      dispatch(key === " " ? "Space" : key);
       dispatch("key", key);
     }
   }} />

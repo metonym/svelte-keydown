@@ -5,6 +5,9 @@
   /** Set to `true` to pause keydown events when typing in an input field */
   export let pauseOnInput = false;
 
+  /**Determines the what goes between keys in a combo*/
+  export let separator = "-";
+
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -12,7 +15,7 @@
   let combo = [];
   let down = [];
 
-  $: combination = combo.join("-");
+  $: combination = combo.join(separator);
   $: comboByKey = combo.reduce((keys, key) => ({ ...keys, [key]: true }), {});
   $: if (combo.length > 0) dispatch("combo", combination);
 </script>

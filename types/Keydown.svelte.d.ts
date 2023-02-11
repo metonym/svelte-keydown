@@ -13,6 +13,12 @@ export interface KeydownProps {
    * @default false
    */
   pauseOnInput?: boolean;
+
+  /**
+   * Determines the what goes between keys in a combo*
+   * @default "-"
+   */
+  separator?: string;
 }
 
 export default class Keydown extends SvelteComponentTyped<

@@ -139,12 +139,29 @@ Use the `combo` dispatched event to listen for a combination of keys.
 {combo.join(", ")}
 ```
 
+#### `separator`
+
+Use the `separator` property to specify the string between key when using `on:combo`
+
+```svelte
+<script>
+  import Keydown from "svelte-keydown";
+
+  let combo = [];
+</script>
+
+<Keydown separator="+" on:combo={(e) => (combo = [...combo, e.detail])} />
+
+{combo.join(", ")}
+```
+
 ## API
 
 | Prop         | Type      | Default value |
 | :----------- | :-------- | :------------ |
 | paused       | `boolean` | `false`       |
 | pauseOnInput | `boolean` | `false`       |
+| separator    | `string`  | `-`           |
 
 ### Forwarded events
 
@@ -201,6 +218,31 @@ Examples:
 </script>
 
 <Keydown on:combo={({ detail }) => (combos = [...combos, detail])} />
+
+<pre>
+  {JSON.stringify(combos, null, 2)}
+</pre>
+```
+
+
+##### separator
+
+Changes separator keys
+
+Examples:
+
+- "Shift+S"
+- "Meta+c" (Copy)
+- "Meta+v" (Paste)
+
+```svelte
+<script>
+  import Keydown from "svelte-keydown";
+
+  let combos = [];
+</script>
+
+<Keydown  separator="+" on:combo={({ detail }) => (combos = [...combos, detail])} />
 
 <pre>
   {JSON.stringify(combos, null, 2)}

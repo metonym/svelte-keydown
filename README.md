@@ -116,11 +116,7 @@ In this use case, keydown events are paused if the modal is not open.
 
 <Keydown paused={!showModal} on:Escape={() => (showModal = false)} />
 
-<button on:click={() => (showModal = !showModal)}> Toggle me </button>
-
-<br /><br />
-
-Toggled? {showModal}
+<button on:click={() => (showModal = !showModal)}>Toggled? {showModal}</button>
 ```
 
 ### `on:combo`
@@ -195,9 +191,7 @@ Example:
 
 <Keydown on:key={({ detail }) => (keys = [...keys, detail])} />
 
-<pre>
-  {JSON.stringify(keys, null, 2)}
-</pre>
+<pre>{JSON.stringify(keys, null, 2)}</pre>
 ```
 
 #### `on:combo`
@@ -219,9 +213,7 @@ Examples:
 
 <Keydown on:combo={({ detail }) => (combos = [...combos, detail])} />
 
-<pre>
-  {JSON.stringify(combos, null, 2)}
-</pre>
+<pre>{JSON.stringify(combos, null, 2)}</pre>
 ```
 
 ## TypeScript

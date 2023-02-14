@@ -224,31 +224,6 @@ Examples:
 </pre>
 ```
 
-
-##### separator
-
-Changes separator keys
-
-Examples:
-
-- "Shift+S"
-- "Meta+c" (Copy)
-- "Meta+v" (Paste)
-
-```svelte
-<script>
-  import Keydown from "svelte-keydown";
-
-  let combos = [];
-</script>
-
-<Keydown  separator="+" on:combo={({ detail }) => (combos = [...combos, detail])} />
-
-<pre>
-  {JSON.stringify(combos, null, 2)}
-</pre>
-```
-
 ## TypeScript
 
 Svelte version 3.31 or greater is required to use this component with TypeScript.

@@ -5,7 +5,7 @@
   /** Set to `true` to pause keydown events when typing in an input field */
   export let pauseOnInput = false;
 
-  /**Determines the what goes between keys in a combo*/
+  /** Specify the separating key between multiple keys */
   export let separator = "-";
 
   import { createEventDispatcher } from "svelte";
@@ -45,4 +45,5 @@
       dispatch(key === " " ? "Space" : key);
       dispatch("key", key);
     }
-  }} />
+  }}
+/>

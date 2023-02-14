@@ -141,7 +141,7 @@ Use the `combo` dispatched event to listen for a combination of keys.
 
 #### `separator`
 
-Use the `separator` property to specify the string between key when using `on:combo`
+Use the `separator` property to customize the separating key between multiple keys.
 
 ```svelte
 <script>

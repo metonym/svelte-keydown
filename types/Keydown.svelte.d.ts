@@ -15,7 +15,7 @@ export interface KeydownProps {
   pauseOnInput?: boolean;
 
   /**
-   * Determines the what goes between keys in a combo*
+   * Specify the separating key between multiple keys
    * @default "-"
    */
   separator?: string;

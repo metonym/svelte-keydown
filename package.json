@@ -6,7 +6,7 @@
   "author": "Eric Liu (https://github.com/metonym)",
   "svelte": "./src/index.js",
   "main": "./src/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./src/index.d.ts",
   "scripts": {
     "dev": "rollup -cw",
     "predeploy": "rollup -c",
@@ -35,7 +35,6 @@
     "combo"
   ],
   "files": [
-    "src",
-    "types"
+    "src"
   ]
 }

@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0](https://github.com/metonym/svelte-keydown/releases/tag/v0.7.0) - 2024-03-14
+
+**Breaking Changes**
+
+- drop bundled UMD/ESM support; only publish uncompiled `.svelte` code
+- colocate TypeScript definitions with component source
+
+**Fixes**
+
+- add `exports` field to `package.json`
+
 ## [0.6.0](https://github.com/metonym/svelte-keydown/releases/tag/v0.6.0) - 2023-02-14
 
 - add `separator` prop to customize the key between keys

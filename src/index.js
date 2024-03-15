@@ -1,3 +1,1 @@
-import Keydown from "./Keydown.svelte";
-
-export default Keydown;
+export { default } from "./Keydown.svelte";

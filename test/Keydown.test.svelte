@@ -1,11 +1,10 @@
 <script lang="ts">
-  import Keydown from "../types";
-  import K from "../types/Keydown.svelte";
+  import Keydown from "../src";
+  import K from "../src/Keydown.svelte";
 
   let showModal = true;
 </script>
 
-<!-- svelte-ignore missing-declaration -->
 <Keydown
   pauseOnInput
   paused={!showModal}
@@ -17,5 +16,4 @@
   }}
 />
 
-<!-- svelte-ignore missing-declaration -->
 <K on:combo={(e) => e.detail} />

@@ -1,5 +1,4 @@
-/// <reference types="svelte" />
-import { SvelteComponentTyped } from "svelte";
+import type { SvelteComponentTyped } from "svelte";
 
 export interface KeydownProps {
   /**
@@ -26,9 +25,7 @@ export default class Keydown extends SvelteComponentTyped<
   {
     combo: CustomEvent<string>;
     key: CustomEvent<string>;
-    // @ts-expect-error
     keyup: WindowEventMap["keyup"];
-    // @ts-expect-error
     keydown: WindowEventMap["keydown"];
     [key: string]: CustomEvent<any>;
   },
